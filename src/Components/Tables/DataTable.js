@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap';
+import axios from 'axios';
 import ModalForm from '../Modals/Modal'
 
 class DataTable extends Component {
@@ -7,6 +8,8 @@ class DataTable extends Component {
   deleteItem = id => {
     let confirmDelete = window.confirm('Deseja Deletar?')
     if(confirmDelete){
+      console.log(id)
+      axios.delete('https://mv-teste.herokuapp.com/employee/' + id);
       fetch('https://mv-teste.herokuapp.com/employee', {
       method: 'delete',
       headers: {
